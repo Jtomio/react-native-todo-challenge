@@ -4,8 +4,9 @@ import Logo from '../assets/Logo.svg'
 
 export function Header() {
   return (
-    <View className=' justify-start items-center '>
+    <View className='py-16 justify-center items-center '>
       <Logo
+
       />
 
 

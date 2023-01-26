@@ -6,10 +6,10 @@ import { Tasks } from "./Tasks";
 
 export function Home() {
   return (
-    <View className="flex-1 justify-center items-center bg-[#0d0d0d]">
+    <View className="flex-1  justify-center items-center pt-40 bg-[#0d0d0d]">
       <Header />
       <NewTask />
-      <Tasks />
+      {/* <Tasks /> */}
 
     </View>
   )
