@@ -1,16 +1,20 @@
-import { TextInput, View, FlatList, TouchableOpacity, Alert, Text } from 'react-native'
+import { TextInput, View, FlatList, TouchableOpacity, TouchableOpacityProps, Alert, Text } from 'react-native'
+import Checkbox from 'expo-checkbox';
 import React, { useState } from 'react'
 import { AntDesign } from '@expo/vector-icons'
 
 import colors from 'tailwindcss/colors'
-import { CheckBox } from './Checkox'
+import { CheckBoxTask } from './CheckoxTask'
 import { EmptyTask } from './EmptyTask'
+
+
 
 export function NewTask() {
 
   const [tasks, setTasks] = useState<string[]>([])
   const [taskName, setTaskName] = useState('')
   const taskNumber = tasks.length
+
 
 
   function handleTaskAdd() {
@@ -37,10 +41,10 @@ export function NewTask() {
     ])
   }
 
-  function handleChecked() {
-    Alert.alert('click checked')
-    console.log('cgjhjkghcjghc')
-  }
+  // function toggleTask(isCheck: string) {
+  //   Alert.alert("clicou no check")
+  // }
+
 
   return (
     <View>
@@ -86,11 +90,14 @@ export function NewTask() {
         keyExtractor={item => item}
         data={tasks}
         renderItem={({ item }) => (
-          <CheckBox
+          <CheckBoxTask
             key={item}
             task={item}
+            // onPress={() => toggleTask(item)}
+            onRemove={() => handleTaskRemove(item)}
 
-            onRemove={() => handleTaskRemove(item)} />
+
+          />
         )}
         showsVerticalScrollIndicator={false}
         ListEmptyComponent={() => (
