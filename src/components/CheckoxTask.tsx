@@ -1,25 +1,28 @@
 import React, { useState } from 'react';
-import { TouchableOpacity, View, Text, Alert, TouchableOpacityProps } from 'react-native'
+import { TouchableOpacity, View, Text, TouchableOpacityProps } from 'react-native'
 import { Feather } from '@expo/vector-icons'
 import Animated, { ZoomIn, ZoomOut } from 'react-native-reanimated';
 import colors from 'tailwindcss/colors'
 import { FontAwesome } from '@expo/vector-icons';
 
 
-type Props = {
+type Props = TouchableOpacityProps & {
   checked?: boolean;
   task: string
   onRemove: () => void
+  onPress: () => void
 
 }
-export function CheckBoxTask({ task, onRemove, checked = true }: Props) {
+export function CheckBoxTask({ task, onRemove, onPress, checked = false, ...rest }: Props) {
 
 
 
   return (
     <TouchableOpacity
       activeOpacity={0.7}
-      className='flex-row justify-between items-center py-4 bg-[#333333] rounded-lg w-[330px] p-3 mt-3'>
+      className='flex-row justify-between items-center py-4 bg-[#333333] rounded-lg w-[340px] p-3 mt-3'
+      {...rest}
+    >
       {checked
         ?
         <>
@@ -27,10 +30,12 @@ export function CheckBoxTask({ task, onRemove, checked = true }: Props) {
             className='h-6 w-6 bg-[#5E60CE] rounded-full items-center justify-center'
             entering={ZoomIn}
             exiting={ZoomOut}>
+
             <Feather
               name='check'
               size={16}
               color={colors.white}
+              onPress={onPress}
             />
           </Animated.View>
           <Text
@@ -46,7 +51,7 @@ export function CheckBoxTask({ task, onRemove, checked = true }: Props) {
         name="trash-o"
         size={16}
         color="#808080"
-        // onPress={onPress}
+
         onRemove={onRemove}
 
         className='px-8'

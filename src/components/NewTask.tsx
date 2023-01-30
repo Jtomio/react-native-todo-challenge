@@ -1,5 +1,4 @@
-import { TextInput, View, FlatList, TouchableOpacity, TouchableOpacityProps, Alert, Text } from 'react-native'
-import Checkbox from 'expo-checkbox';
+import { TextInput, View, FlatList, TouchableOpacity, Alert, Text } from 'react-native'
 import React, { useState } from 'react'
 import { AntDesign } from '@expo/vector-icons'
 
@@ -41,16 +40,16 @@ export function NewTask() {
     ])
   }
 
-  // function toggleTask(isCheck: string) {
-  //   Alert.alert("clicou no check")
-  // }
+  function toggleTask() {
+    Alert.alert("clicou no check")
+  }
 
 
   return (
     <View>
       <View className='flex-row pb-4 my-4'>
         <TextInput
-          className='w-[300px] h-8 bg-gray-700  mr-2 pl-3 rounded-sm'
+          className='w-[300px] h-8 bg-gray-700 mr-2 pl-3 rounded-sm'
           placeholder='Adicionar uma tarefa'
           placeholderTextColor='#6b6b6b'
           onChangeText={setTaskName}
@@ -72,7 +71,7 @@ export function NewTask() {
 
       </View>
       <View className="w-[330px] justify-center items-center">
-        <View className="flex-row justify-between w-[327px] h-[19px]" >
+        <View className="flex-row justify-between w-[330px] h-[19px]" >
           <Text className='justify-center items-center w-1/2'>
             <Text className="text-[#4ea8de] justify-center items-center font-semibold">
               Criadas {''}
@@ -93,10 +92,8 @@ export function NewTask() {
           <CheckBoxTask
             key={item}
             task={item}
-            // onPress={() => toggleTask(item)}
+            onPress={() => handleTaskRemove}
             onRemove={() => handleTaskRemove(item)}
-
-
           />
         )}
         showsVerticalScrollIndicator={false}
