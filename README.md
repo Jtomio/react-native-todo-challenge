@@ -4,9 +4,10 @@ Uma aplicação mobile utilizando React Native. Objetivo de concluir o Desafio p
 
 ## Screenshots
 
-![App Screenshot](./assets/TodoEmpty.png)
-![App Screenshot](./assets/TodoTask.png)
-
+<p align="center">
+<img src="./assets/TodoEmpty.png">
+<img src="./assets/TodoTask.png">
+</p>
 ## Badges
 
 Add badges from somewhere like: [shields.io](https://shields.io/)
