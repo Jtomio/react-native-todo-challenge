@@ -1,4 +1,4 @@
-import { View, Text, FlatList, Alert, TextInput, TouchableOpacity } from "react-native";
+import { View } from "react-native";
 import { Header } from "./Header";
 import { NewTask } from "./NewTask";
 

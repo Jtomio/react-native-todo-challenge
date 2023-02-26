@@ -1,61 +1,65 @@
-import React, { useState } from 'react';
-import { TouchableOpacity, View, Text, TouchableOpacityProps } from 'react-native'
-import { Feather } from '@expo/vector-icons'
-import Animated, { ZoomIn, ZoomOut } from 'react-native-reanimated';
-import colors from 'tailwindcss/colors'
+import React from 'react';
+import { TouchableOpacity, Text } from 'react-native'
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+
 import { FontAwesome } from '@expo/vector-icons';
+import { TaskCheckedProps } from "./NewTask"
 
 
-type Props = TouchableOpacityProps & {
-  checked?: boolean;
-  task: string
-  onRemove: () => void
-  onPress: () => void
-
+interface TaskProps {
+  task: TaskCheckedProps;
+  handleRemoveTask: (id: number) => void;
+  handleToggleTaskStatus: (id: number) => void;
 }
-export function CheckBoxTask({ task, onRemove, onPress, checked = false, ...rest }: Props) {
+
+
+export function CheckBoxTask({ handleRemoveTask,
+  handleToggleTaskStatus,
+  task }: TaskProps) {
 
 
 
   return (
     <TouchableOpacity
       activeOpacity={0.7}
-      className='flex-row justify-between items-center py-4 bg-[#333333] rounded-lg w-[340px] p-3 mt-3'
-      {...rest}
+      className=' flex-row items-center justify-between py-4 bg-[#333333] rounded-lg w-[340px] p-3 mt-3'
+
     >
-      {checked
-        ?
-        <>
-          <Animated.View
-            className='h-6 w-6 bg-[#5E60CE] rounded-full items-center justify-center'
-            entering={ZoomIn}
-            exiting={ZoomOut}>
+      <TouchableOpacity onPress={() => handleToggleTaskStatus(task.id)}>
 
-            <Feather
-              name='check'
-              size={16}
-              color={colors.white}
-              onPress={onPress}
-            />
-          </Animated.View>
-          <Text
-            className='text-gray-100 text-base -ml-56 opacity-50 line-through'
-          >{task}
-          </Text>
-        </> :
-        <>
-          <View className='h-6 w-6 bg-[#333333] border-2 border-[#4EA8DE] rounded-full' />
-          <Text className='text-white text-base -ml-56'>{task}</Text>
-        </>}
-      <FontAwesome
-        name="trash-o"
-        size={16}
-        color="#808080"
+        <MaterialCommunityIcons
+          name={
+            task.isCompleted ? "checkbox-marked-circle" : "checkbox-blank-circle-outline"
+          }
+          size={20}
+          color={task.isCompleted ? '#5e60ce' : "#4ea8de"}
+        />
+      </TouchableOpacity>
 
-        onRemove={onRemove}
 
-        className='px-8'
-      />
+      <Text
+        className={
+          task.isCompleted
+            ? 'text-gray-100 text-base -ml-56 opacity-50 line-through'
+            : ' w-16 -ml-48 text-gray-200 bg-[#333333]'
+        }
+      >{task.content}</Text>
+
+
+
+      <TouchableOpacity
+        onPress={() => handleRemoveTask(task.id)}
+        className="flex-row"
+      >
+        <FontAwesome
+          name="trash-o"
+          size={16}
+          color="#808080"
+          className='px-8'
+        />
+      </TouchableOpacity>
+
+
     </TouchableOpacity >
   )
 }
