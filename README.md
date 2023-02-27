@@ -11,7 +11,6 @@ Uma aplicação mobile utilizando React Native. Objetivo de concluir o Desafio p
 ## Screenshots
 
 <p align="center">
-<img src="./assets/TodoEmpty.png">
 <img src="./assets/appgif.gif">
 </p>
 
