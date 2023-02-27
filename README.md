@@ -12,7 +12,7 @@ Uma aplicação mobile utilizando React Native. Objetivo de concluir o Desafio p
 
 <p align="center">
 <img src="./assets/TodoEmpty.png">
-<img src="./assets/TodoTask.png">
+<img src="./assets/appgif.gif">
 </p>
 
 ## Licença
